@@ -5,11 +5,16 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "View", "View\View.csproj", "{E9C1DBA1-64BC-4AB7-8D45-272387BC996F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinessObjects", "BussinessObjects\BussinessObjects.csproj", "{BB36B7C7-02DB-4D12-BC98-0F54E3193F12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BussinessObjects", "BussinessObjects\BussinessObjects.csproj", "{BB36B7C7-02DB-4D12-BC98-0F54E3193F12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{FA077781-F0AF-450D-B6CA-9FCB4EF4AEAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{FA077781-F0AF-450D-B6CA-9FCB4EF4AEAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{B03E9AE5-8187-4A37-BC0D-DC082EF20325}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories\Repositories.csproj", "{B03E9AE5-8187-4A37-BC0D-DC082EF20325}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56F8209C-FD3A-492A-B415-6A1504D1056D}"
+	ProjectSection(SolutionItems) = preProject
+		Sever.Json = Sever.Json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="498" Width="458">
+        Title="MainWindow" Height="498" Width="458" Loaded="Awake">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -39,15 +39,15 @@
 
         <!-- Row 1 Col 1 -->
         <Canvas Grid.Row="1" Grid.Column="1" Background="LightPink">
-            <TextBox Canvas.Left="10" TextWrapping="Wrap" Text="TextBox" Canvas.Top="10" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
-            <TextBox Canvas.Left="10" TextWrapping="Wrap" Text="TextBox" Canvas.Top="40" Width="238" HorizontalAlignment="Left"   Height="25" VerticalAlignment="Center"/>
-            <TextBox Canvas.Left="10" TextWrapping="Wrap" Text="TextBox" Canvas.Top="70" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
-            <TextBox Canvas.Left="10" TextWrapping="Wrap" Text="TextBox" Canvas.Top="100" Width="238" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="ProductID" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="10" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
+            <TextBox x:Name="ProductName" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="40" Width="238" HorizontalAlignment="Left"   Height="25" VerticalAlignment="Center"/>
+            <TextBox x:Name="UnitPrice" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="70" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
+            <TextBox x:Name="UnitsInStock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="100" Width="238" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <ComboBox Canvas.Left="10" Canvas.Top="130" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
 
         </Canvas>
         <Canvas Grid.Row="2" Grid.ColumnSpan="2" Background="LightGray">
-            <ListView Height="206" Width="auto" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <ListView Height="206" Width="auto" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top" >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Product ID" Width="auto"/>
