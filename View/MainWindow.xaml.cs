@@ -152,12 +152,24 @@ namespace View
             try
             {
                 var newProduct = products[selectedProductIndex];
-                newProduct.ProductName = ProductName.Text;
+                if (ProductName.Text == string.Empty)
+                {
+                    throw new Exception("Name cannot be emty");
+                }
+                newProduct.ProductName = ProductName.Text == string.Empty ? null : ProductName.Text;
                 newProduct.CategoryId = GetIdCategoryByName(CategoryBox.Text) == -1 ? null : GetIdCategoryByName(CategoryBox.Text);
                 newProduct.UnitsInStock = UnitsInStock.Text != string.Empty ? short.Parse(UnitsInStock.Text) : null;
                 newProduct.UnitPrice = UnitPrice.Text != string.Empty ? decimal.Parse(UnitPrice.Text) : null;
 
 
+                if (UnitsInStock.Text != string.Empty && short.Parse(UnitsInStock.Text) < 0)
+                {
+                    throw new Exception("UnitsInStock Cannot Negative");
+                }
+                if (UnitPrice.Text != string.Empty && decimal.Parse(UnitPrice.Text) < 0)
+                {
+                    throw new Exception("UnitPrice Cannot Negative");
+                }
 
                 if (productRes.UpdateAProduct(newProduct))
                 {
@@ -185,9 +197,9 @@ namespace View
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception x)
             {
-                MessageBox.Show("Update Fail, Please try again", "Alert");
+                MessageBox.Show(x.ToString());
             }
             
 
@@ -222,13 +234,33 @@ namespace View
             {
                 try
                 {
+                    if (ProductName.Text == string.Empty)
+                    {
+                        throw new Exception("Name cannot be emty");
+                    }
+                   
+
                     var newProduct = new Product();
                     newProduct.ProductName = ProductName.Text;
                     newProduct.CategoryId = GetIdCategoryByName(CategoryBox.Text) == -1 ? null : GetIdCategoryByName(CategoryBox.Text);
                     newProduct.UnitsInStock = UnitsInStock.Text != string.Empty ? short.Parse(UnitsInStock.Text) : null;
                     newProduct.UnitPrice =    UnitPrice.Text != string.Empty ? decimal.Parse(UnitPrice.Text) : null;
+
+                    if (UnitsInStock.Text != string.Empty && short.Parse(UnitsInStock.Text) < 0)
+                    {
+                        throw new Exception("UnitsInStock Cannot Negative");
+                    }
+                    if (UnitPrice.Text != string.Empty && decimal.Parse(UnitPrice.Text) < 0)
+                    {
+                        throw new Exception("UnitPrice Cannot Negative");
+                    }
+
+
                     if (productRes.AddNewProduct(newProduct))
                     {
+
+                       
+
                         MessageBox.Show("Add successfully", "Alert");
                         InitDataProduct();
                         UpdateDisplayProduct();
@@ -256,9 +288,9 @@ namespace View
                        
                     }
                 }
-                catch (Exception)
+                catch (Exception x)
                 {
-                    MessageBox.Show("Add Fail, Please try again", "Alert");
+                    MessageBox.Show(x.ToString());
                 }
             }
 
