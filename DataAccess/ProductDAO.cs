@@ -48,7 +48,7 @@ namespace DataAccess
             try
             {
                 context = new MyStoreContext();
-                Product oldProduct = context.Products.Where(p => p.ProductId == newProduct.ProductId).ToList(0);
+                Product oldProduct = context.Products.Where(p => p.ProductId == newProduct.ProductId).ToList()[0];
                 if (oldProduct != null)
                 {
                     context.Products.Update(newProduct);

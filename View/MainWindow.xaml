@@ -43,11 +43,11 @@
             <TextBox x:Name="ProductName" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="40" Width="238" HorizontalAlignment="Left"   Height="25" VerticalAlignment="Center"/>
             <TextBox x:Name="UnitPrice" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="70" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
             <TextBox x:Name="UnitsInStock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="100" Width="238" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <ComboBox Canvas.Left="10" Canvas.Top="130" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CategoryBox" Canvas.Left="10" Canvas.Top="130" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
 
         </Canvas>
         <Canvas Grid.Row="2" Grid.ColumnSpan="2" Background="LightGray">
-            <ListView Height="206" Width="auto" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top" >
+            <ListView x:Name="ProductView" Height="206" Width="auto" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top" >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Product ID" Width="auto"/>
