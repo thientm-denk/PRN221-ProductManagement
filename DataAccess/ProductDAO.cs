@@ -1,6 +1,8 @@
 ﻿using BussinessObjects.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,24 +44,70 @@ namespace DataAccess
             return productList;
         }
 
-        public void UpdateAProduct(Product newProduct)
+        public bool UpdateAProduct(Product newProduct)
         {
             MyStoreContext context = null;
             try
             {
                 context = new MyStoreContext();
-                Product oldProduct = context.Products.Where(p => p.ProductId == newProduct.ProductId).ToList()[0];
+                Product oldProduct = context.Products.Local.FirstOrDefault(p => p.ProductId == newProduct.ProductId)
+                    ?? context.Products.FirstOrDefault(p => p.ProductId == newProduct.ProductId);
+
                 if (oldProduct != null)
                 {
+                    context.Entry(oldProduct).State = EntityState.Detached;
                     context.Products.Update(newProduct);
                     context.SaveChanges();
                 }
             }
             catch (Exception e)
             {
-
+                return false;
             }
+            return true;
         }
 
+        public bool AddNewProduct(Product newProduct)
+        {
+
+            MyStoreContext context = null;
+            try
+            {
+                context = new MyStoreContext();
+                Product oldProduct = context.Products.Local.FirstOrDefault(p => p.ProductId == newProduct.ProductId)
+                    ?? context.Products.FirstOrDefault(p => p.ProductId == newProduct.ProductId);
+
+                if (oldProduct == null)
+                {
+                    context.Products.Add(newProduct);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool DeleteAProduct(int id)
+        {
+            try
+            {
+                var context = new MyStoreContext();
+                Product oldProduct = context.Products.Where(p => p.ProductId == id).ToList()[0];
+
+                if (oldProduct != null)
+                {
+                    context.Products.Remove(oldProduct);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

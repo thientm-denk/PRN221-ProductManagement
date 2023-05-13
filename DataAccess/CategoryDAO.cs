@@ -40,5 +40,35 @@ namespace DataAccess
             }
             return list;
         }
+
+        public Category GetCategoryById(int? id)
+        {
+            Category category = null;
+            try
+            {
+                MyStoreContext context = new MyStoreContext();
+                category = context.Categories.Where(c => c.CategoryId == id).ToList()[0]; 
+            }
+            catch (Exception e)
+            {
+
+            }
+            return category;
+        }
+
+        public Category GetCategoryByName(string? name)
+        {
+            Category category = null;
+            try
+            {
+                MyStoreContext context = new MyStoreContext();
+                category = context.Categories.Where(c => c.CategoryName == name).ToList()[0];
+            }
+            catch (Exception e)
+            {
+                
+            }
+            return category;
+        }
     }
 }

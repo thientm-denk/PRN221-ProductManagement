@@ -14,5 +14,10 @@ namespace Repositories.Implementation
         {
             return CategoryDAO.Instance.GetAllCategories();
         }
+
+        public Category GetCategoryById(int? id)
+        {
+            return CategoryDAO.Instance.GetCategoryById(id);
+        }
     }
 }

@@ -12,5 +12,8 @@ namespace Repositories
 
     {
         public List<Product> GetProducts();
+        public bool UpdateAProduct(Product newProduct);
+        public bool AddNewProduct(Product newProduct);
+        public bool DeleteAProduct(int id);
     }
 }

@@ -1,6 +1,8 @@
-﻿using System;
+﻿
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
+using System;
+
 
 #nullable disable
 
@@ -24,10 +26,22 @@ namespace BussinessObjects.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server =(local); database = MyStore;uid=sa;pwd=123;");
+                optionsBuilder.UseSqlServer(GetConnectionString());
             }
         }
+
+        private string GetConnectionString()
+        {
+       
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            return configuration.GetConnectionString("DefaultConnection");
+        }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

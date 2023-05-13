@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="498" Width="458" Loaded="Awake">
+        Title="MainWindow" Height="520" Width="520" Loaded="Awake">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -39,30 +39,30 @@
 
         <!-- Row 1 Col 1 -->
         <Canvas Grid.Row="1" Grid.Column="1" Background="LightPink">
-            <TextBox x:Name="ProductID" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="10" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
+            <TextBox x:Name="ProductID" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="10" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" IsReadOnly="True"/>
             <TextBox x:Name="ProductName" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="40" Width="238" HorizontalAlignment="Left"   Height="25" VerticalAlignment="Center"/>
             <TextBox x:Name="UnitPrice" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="70" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
             <TextBox x:Name="UnitsInStock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="100" Width="238" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <ComboBox x:Name="CategoryBox" Canvas.Left="10" Canvas.Top="130" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CategoryBox" Canvas.Left="10" Canvas.Top="130" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" SelectionChanged="OnChangeSelectedCaterogy" />
 
         </Canvas>
         <Canvas Grid.Row="2" Grid.ColumnSpan="2" Background="LightGray">
-            <ListView x:Name="ProductView" Height="206" Width="auto" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top" >
+            <ListView x:Name="ProductView" Height="206" Width="auto" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top" SelectionChanged="OnChangeSelectProduct">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Product ID" Width="auto"/>
-                        <GridViewColumn Header="Product name" Width="auto"/>
-                        <GridViewColumn Header="Category ID" Width="auto"/>
-                        <GridViewColumn Header="Units in stock" Width="auto"/>
-                        <GridViewColumn Header="Unit price" Width="auto"/>
+                        <GridViewColumn Header="Product ID" Width="auto" DisplayMemberBinding="{Binding ProductId}"/>
+                        <GridViewColumn Header="Product name" Width="auto" DisplayMemberBinding="{Binding ProductName}"/>
+                        <GridViewColumn Header="Category ID" Width="auto" DisplayMemberBinding="{Binding CategoryId}"/>
+                        <GridViewColumn Header="Units in stock" Width="auto" DisplayMemberBinding="{Binding UnitsInStock}"/>
+                        <GridViewColumn Header="Unit price" Width="auto" DisplayMemberBinding="{Binding UnitPrice}"/>
 
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button Content="Create" Canvas.Left="233" Canvas.Top="211" Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button Content="Save" Canvas.Left="288" Canvas.Top="211" Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button Content="Update" Canvas.Left="343" Canvas.Top="211" Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button Content="Delete" Canvas.Left="398" Canvas.Top="212" Height="30" Width="50"/>
+            <Button Content="Create" Canvas.Left="233" Canvas.Top="211" Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Click="OnClickCreate"/>
+            <Button Content="Save" Canvas.Left="288" Canvas.Top="211" Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Click="OnClickSave"/>
+            <Button Content="Update" Canvas.Left="343" Canvas.Top="211" Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Click="OnClickUpdate"/>
+            <Button Content="Delete" Canvas.Left="400" Canvas.Top="211" Height="30" Width="50"  Click="OnClicDelete"/>
 
         </Canvas>
     </Grid>
