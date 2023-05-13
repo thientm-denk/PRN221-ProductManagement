@@ -1,0 +1,69 @@
+﻿<Window x:Class="View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="498" Width="458">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="180"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Row 0, Column 0 -->
+        <Canvas Grid.Row="0" Grid.Column="0" Background="LightBlue">
+            <!-- Content for the first cell -->
+        </Canvas>
+
+        <!-- Row 0 Col 1 -->
+        <Canvas Grid.Row="0" Grid.Column="1" Background="LightGreen">
+            <Label Content="Product Management" Canvas.Left="10" Canvas.Top="7" RenderTransformOrigin="0.526,0.579" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+
+        </Canvas>
+
+        <!-- Row Col 0 -->
+        <Canvas Grid.Row="1" Grid.Column="0" Background="LightYellow">
+            <Label Content="Product ID" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="10"  Height="30"/>
+            <Label Content="Product Name" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Canvas.Left="10" Canvas.Top="41" Width="149"  Height="30"/>
+            <Label Content="Price" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="71" Width="131"  Height="30"/>
+            <Label Content="Units In Stock&#xD;&#xA;" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="101" Width="189" Height="30"/>
+            <Label Content="Category" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="131"  Height="30"/>
+        </Canvas>
+
+        <!-- Row 1 Col 1 -->
+        <Canvas Grid.Row="1" Grid.Column="1" Background="LightPink">
+            <TextBox Canvas.Left="10" TextWrapping="Wrap" Text="TextBox" Canvas.Top="10" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
+            <TextBox Canvas.Left="10" TextWrapping="Wrap" Text="TextBox" Canvas.Top="40" Width="238" HorizontalAlignment="Left"   Height="25" VerticalAlignment="Center"/>
+            <TextBox Canvas.Left="10" TextWrapping="Wrap" Text="TextBox" Canvas.Top="70" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
+            <TextBox Canvas.Left="10" TextWrapping="Wrap" Text="TextBox" Canvas.Top="100" Width="238" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <ComboBox Canvas.Left="10" Canvas.Top="130" Width="238" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center"/>
+
+        </Canvas>
+        <Canvas Grid.Row="2" Grid.ColumnSpan="2" Background="LightGray">
+            <ListView Height="206" Width="auto" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Product ID" Width="auto"/>
+                        <GridViewColumn Header="Product name" Width="auto"/>
+                        <GridViewColumn Header="Category ID" Width="auto"/>
+                        <GridViewColumn Header="Units in stock" Width="auto"/>
+                        <GridViewColumn Header="Unit price" Width="auto"/>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button Content="Create" Canvas.Left="233" Canvas.Top="211" Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button Content="Save" Canvas.Left="288" Canvas.Top="211" Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button Content="Update" Canvas.Left="343" Canvas.Top="211" Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button Content="Delete" Canvas.Left="398" Canvas.Top="212" Height="30" Width="50"/>
+
+        </Canvas>
+    </Grid>
+</Window>
